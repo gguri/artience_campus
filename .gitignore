@@ -57,7 +57,7 @@ coverage.xml
 *.log
 local_settings.py
 db.sqlite3
-mysql_auth
+mysql_auth.py
 mysql.cnf
 
 # Flask stuff:
