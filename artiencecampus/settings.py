@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'service.apps.ServiceConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'service',
     'django_summernote',
     'board',
 ]
@@ -87,11 +87,13 @@ WSGI_APPLICATION = 'artiencecampus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(BASE_DIR, "mysql.cnf"),
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" # strict mode 설정 추가
-        }
-    }
+        'NAME':'artiencecampus', # 데이터베이스 이름 
+        'USER':'root', # 데이터베이스 연결시 사용할 유저 이름 
+        'PASSWORD':'gkwjdcjf12!@', # 유저 패스워드	
+        'HOST':'localhost', 
+        'PORT':'', 
+        'OPTIONS': {'charset': 'utf8mb4'}, # 
+    } 
 }
 
 

@@ -40,7 +40,7 @@
                 <div class ="artience-teacher-main">강사 : {{ post_teacher }} 강사님</div>
                 <div class ="artience-date-main">강의 일자 : {{post_lecturedate}}</div>
                 <div class ="artience-min-main">최소인원 : {{post_min}}</div>
-                <div class ="artience-apply-main">수강신청수 : {{post.application_set.count}}</div>
+                <div class ="artience-apply-main">수강신청수 : {{post.application_set.count}}({{student}})</div>
                 <br>
 
                   <!-- Default input -->
@@ -53,6 +53,9 @@
 
                   </a>
                   {% endif %}
+                  
+                 
+                  
               </div>
               <!--Content-->
 
@@ -73,7 +76,7 @@
               <h4 class="my-4 h4"> 강의 소개 </h4>
 
               <p>  <p>{% autoescape off %} {{post_description}} {% endautoescape %}</p></p>
-
+              
             </div>
             <!--Grid column-->
 

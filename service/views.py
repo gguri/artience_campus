@@ -5,10 +5,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+import mysql_auth
+import MySQLdb
 import re
 
 
 def index(request):
+    # 사용자가 로그인 했다면 home으로 redirect
     if request.user.is_authenticated:
         return redirect('home')
     return render(request,"index.html")
@@ -35,7 +38,7 @@ def home(request):
         return redirect('index')
     my_user = request.user.myuser
     complete_post = Post.objects.all()
-    complete_post = complete_post.order_by('date')
+    complete_post = complete_post.order_by('-date')
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
 
@@ -97,7 +100,26 @@ def lecture(request,id) :
     post = Post.objects.filter(id=id).last()
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
+    
 
+    login = mysql_auth.Info
+    db = MySQLdb.connect(
+        db = login['db'],
+        host = login['host'],
+        user = login['user'],
+        passwd = login['passwd'])
+    cursor = db.cursor()
+    
+    sql = """select first_name from(SELECT c.title , d.first_name, d.email FROM service_application a LEFT JOIN service_myuser b ON a.user_id=b.id LEFT JOIN auth_user d ON b.user_django_id=d.id LEFT JOIN service_post c ON a.post_id=c.id) as student where title = (%s)""" 
+    cursor.execute(sql, post.title)
+    result = cursor.fetchall()
+    student = "result"
+    for index, name in enumerate(result):
+        if index is 0:
+            student = name[0]
+        else :
+            student = student + ", "+name[0]
+        
 
     context = dict(
         post = post,
@@ -110,7 +132,8 @@ def lecture(request,id) :
         post_lecturedate = post.lecture_date,
         post_min = post.min ,
         post_teacher = post.teacher,
-        applications = applications
+        applications = applications,
+        student = student
     )
 
     return render(request,"lecture.html",context)
