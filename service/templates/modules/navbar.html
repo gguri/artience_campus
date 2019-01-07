@@ -1,0 +1,50 @@
+{% load static %}
+
+<!--<nav class="artience-navbar" id="artience-navbar">
+    <section class="artience-navbar_content">
+        <a href="{% url 'home' %}" class="artience-navbar_section">
+          <span class="fa fa-university artience-navbar_icon"></span>
+            <span class="artience-navbar_separator"></span>
+            <img class="artience-navbar_letras" src="{% static 'images/artience_logo.png' %}" alt="Instagram">
+        </a>
+        <form method="POST" action="{% url 'search' %}" autocomplete="off">
+            {% csrf_token %}
+            <input type="search" placeholder="검색어를 입력하세요" name="search_username" class="artience-navbar_input">
+        </form>
+        <section class="artience-navbar_section">
+            <a href="{% url 'new' %}" class="fa fa-book artience-navbar_icon"></a>
+            <a href="{% url 'profile'  username  %}" class="fa fa-user-o artience-navbar_icon"></a>
+            <a href="{% url 'logout' %}" class="fa fa-sign-out artience-navbar_icon"></a>
+        </section>
+    </section>
+</nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+        <img class="artience-navbar_letras" src="{% static 'images/logo-300x1121.png' %}" alt="Instagram">
+
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Main
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'new' %}">강의 등록</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile'  username  %}">수강내역조회</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">로그아웃</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block maincontent %}
+	{% include "modules/navbar.html" %}
+<div class="container">
+	<div class="title">
+	<h4 class="my-4">강의 목록
+	</h4>
+ </title>
+            <div class="row">
+            {% for post in complete_post %}
+                {% include "modules/card.html" %}
+            {% endfor %}
+
+
+			</div>
+</div>
+
+	{% include "modules/footer.html" %}
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block maincontent %}
+  	{% include "modules/navbar.html" %}
+
+
+<div class="container">
+<section class ="artience-post">
+  <a class="post_title" ><h3 style="
+    margin-bottom: 15px;"> 새 강의 등록 </h3></a>
+<form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group ">
+     <label for="input_title">강의 제목 </label>
+     <input type="text" class="form-control" id="input_title" name = "title" placeholder="강의 제목을 입력해주세요" required>
+    </div>
+    <div class="form-group form-inline">
+     <label for="input_name">강의자 : &nbsp;</label>
+     <input type="text" class="form-control" id="input_name" name = "teacher" placeholder="김영호" required>
+     <label for="input_name" required> &nbsp; 최소 인원 : &nbsp;</label>
+     <input type="text" class="form-control" id="input_name" placeholder="10" name="min">
+     <label for="input_name" required> &nbsp; 강의일 : &nbsp;</label>
+
+
+     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+         <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/ name="startdate" data>
+         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+         </div>
+     </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">메인 이미지 업로드 : </label>
+      <input type="file" id="exampleInputFile" name="file" required >
+    </div>
+
+    <div class="form-group">
+      <label for="editor">강의 내용</label>
+      <br>
+      <div class ="col-sm-12">
+    {{ form|safe }}
+  </div>
+    </div>
+    <button type="submit" class="btn btn-default">등록</button>
+    <a href="{% url 'home' %}" class="btn btn-default" role="button">취소</a>
+</form>
+</section>
+</div>
+<script type="text/javascript">
+$('.editdate').datetimepicker({
+  format: "YYYY-MM-DD HH:00"
+
+}
+
+);
+
+
+</script>
+<script type="text/javascript">
+$(function () {
+    $('#datetimepicker1').datetimepicker({
+      format: 'YYYY-MM-DD HH:00'
+    }
+    );
+});
+</script>
+{% include "modules/footer.html" %}
+{% endblock %}
