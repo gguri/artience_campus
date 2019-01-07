@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-mysql.cnf
-
-=======
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -119,4 +115,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
->>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7

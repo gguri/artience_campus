@@ -5,11 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-<<<<<<< HEAD
-=======
 import mysql_auth
 import MySQLdb
->>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 import re
 
 
@@ -102,9 +99,6 @@ def lecture(request,id) :
     post = Post.objects.filter(id=id).last()
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
-<<<<<<< HEAD
-
-=======
     
 
     login = mysql_auth.Info
@@ -125,7 +119,6 @@ def lecture(request,id) :
         else :
             student = student + ", "+name[0]
         
->>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 
     context = dict(
         post = post,
@@ -138,22 +131,15 @@ def lecture(request,id) :
         post_lecturedate = post.lecture_date,
         post_min = post.min ,
         post_teacher = post.teacher,
-<<<<<<< HEAD
-        applications = applications
-=======
         applications = applications,
         student = student
->>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
     )
 
     return render(request,"lecture.html",context)
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 @csrf_exempt
 def apply(request):
     post_id =request.POST['post_id']
