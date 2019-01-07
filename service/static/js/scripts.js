@@ -49,5 +49,3 @@ $(".applyevent").click(function(){
  $(".modal-body").text($(".applyevent").text() + " 하시겠습니까?")
  $(".btn-apply").text($(".applyevent").text())
 })
-
-

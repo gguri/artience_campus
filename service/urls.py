@@ -17,6 +17,3 @@ urlpatterns= [
     path('unapply/',views.unapply,name="unapply"),
     path('mail/',views.mail,name="mail"),
 ]
-
-
-import re

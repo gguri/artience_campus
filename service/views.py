@@ -11,7 +11,6 @@ import re
 
 
 def index(request):
-    # 사용자가 로그인 했다면 home으로 redirect
     if request.user.is_authenticated:
         return redirect('home')
     return render(request,"index.html")
@@ -137,6 +136,8 @@ def lecture(request,id) :
     )
 
     return render(request,"lecture.html",context)
+
+
 
 
 @csrf_exempt
