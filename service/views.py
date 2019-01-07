@@ -5,6 +5,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+<<<<<<< HEAD
+=======
+import mysql_auth
+import MySQLdb
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 import re
 
 
@@ -97,7 +102,30 @@ def lecture(request,id) :
     post = Post.objects.filter(id=id).last()
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
+<<<<<<< HEAD
 
+=======
+    
+
+    login = mysql_auth.Info
+    db = MySQLdb.connect(
+        db = login['db'],
+        host = login['host'],
+        user = login['user'],
+        passwd = login['passwd'])
+    cursor = db.cursor()
+    
+    sql = """select first_name from(SELECT c.title , d.first_name, d.email FROM service_application a LEFT JOIN service_myuser b ON a.user_id=b.id LEFT JOIN auth_user d ON b.user_django_id=d.id LEFT JOIN service_post c ON a.post_id=c.id) as student where title = (%s)""" 
+    cursor.execute(sql, post.title)
+    result = cursor.fetchall()
+    student = "result"
+    for index, name in enumerate(result):
+        if index is 0:
+            student = name[0]
+        else :
+            student = student + ", "+name[0]
+        
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 
     context = dict(
         post = post,
@@ -110,12 +138,22 @@ def lecture(request,id) :
         post_lecturedate = post.lecture_date,
         post_min = post.min ,
         post_teacher = post.teacher,
+<<<<<<< HEAD
         applications = applications
+=======
+        applications = applications,
+        student = student
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
     )
 
     return render(request,"lecture.html",context)
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 @csrf_exempt
 def apply(request):
     post_id =request.POST['post_id']

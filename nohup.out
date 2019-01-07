@@ -77587,6 +77587,7 @@ Not Found: /public/index.php
 [07/Jan/2019 07:19:46] "GET / HTTP/1.1" 200 8947
 [07/Jan/2019 07:46:47] "GET / HTTP/1.1" 200 8947
 [07/Jan/2019 08:26:04] "GET / HTTP/1.1" 200 8947
+<<<<<<< HEAD
 [07/Jan/2019 10:27:35] "GET / HTTP/1.1" 200 8947
 Internal Server Error: /
 Traceback (most recent call last):
@@ -77986,3 +77987,5 @@ Traceback (most recent call last):
     raise errorclass(errno, errval)
 django.db.utils.InternalError: (1698, "Access denied for user 'root'@'localhost'")
 [07/Jan/2019 13:57:35] "GET / HTTP/1.1" 500 332919
+=======
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7

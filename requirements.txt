@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 django==2.0.4
+=======
+<<<<<<< HEAD
+django ~> 2.0.4
+=======
+django ~> 2.0.4.
+>>>>>>> dde94216b36a8080e91ca6db19cb996885d99604
+>>>>>>> eb24915b4cda06ade4b84e353d5cfcb4fcde88a7
 django-extensions
 ago
 django-summernote
