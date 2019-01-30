@@ -25,3 +25,4 @@ class Post(models.Model):
 class Application(models.Model):
     user = models.ForeignKey(MyUser , on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=datetime.now())
