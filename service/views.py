@@ -37,7 +37,7 @@ def home(request):
         return redirect('index')
     my_user = request.user.myuser
     complete_post = Post.objects.all()
-    complete_post = complete_post.order_by('-date')
+    complete_post = complete_post.order_by('-lecture_date')
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
 
