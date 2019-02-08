@@ -41,6 +41,8 @@ def home(request):
     applications = Application.objects.filter(user=my_user)
     applications = [application.post.id for application in applications]
 
+
+    
     context = dict(
         current_user = my_user,
         username = request.user.username,

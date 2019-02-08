@@ -3,20 +3,32 @@
 {% load static %}
 
 {% block maincontent %}
-	{% include "modules/navbar.html" %}
+{% include "modules/navbar.html" %}
 <div class="container">
 	<div class="title">
-	<h4 class="my-4">강의 목록
-	</h4>
- </title>
-            <div class="row">
-            {% for post in complete_post %}
-                {% include "modules/card.html" %}
-            {% endfor %}
+		<h4 class="my-4">강의 목록		</h4>
+		<div class="row">
+			{% for post in complete_post %}
+				{% if post.end_lecture == "진행" %}
+				{% include "modules/card.html" %}
+				{% endif %}
+			{% endfor %}
 
 
-			</div>
-</div>
+		</div>
+
+		<h4 class="my-4">종료된 강의		</h4>
+		<div class="row">
+			{% for post in complete_post %}
+				{% if post.end_lecture == "종료" %}
+				{% include "modules/card.html" %}
+				{% endif %}
+			{% endfor %}
+
+
+		</div>
+	</div>
+
 
 	{% include "modules/footer.html" %}
-{% endblock %}
+	{% endblock %}

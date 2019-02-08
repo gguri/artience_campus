@@ -21,6 +21,7 @@ class Post(models.Model):
     teacher = models.CharField(null=True,max_length=200)
     min = models.IntegerField(default=1)
     lecture_date = models.DateTimeField(null=True)
+    end_lecture = models.CharField(null=True,max_length=200)
 
 class Application(models.Model):
     user = models.ForeignKey(MyUser , on_delete=models.CASCADE)
